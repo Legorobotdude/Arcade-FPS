@@ -7,6 +7,7 @@ public class GunRaycast : MonoBehaviour {
 
     public float damage = 10f;
     public float range = 100f;
+    public float impactForce = 10f;
 
     public Camera fpsCam;
 
@@ -38,7 +39,14 @@ public class GunRaycast : MonoBehaviour {
                 target.TakeDamage(damage);
             }
 
-            Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
+            if (hit.transform.GetComponent<Rigidbody>() != null)
+            {
+                hit.transform.GetComponent<Rigidbody>().AddForce(-hit.normal * impactForce);
+
+            }
+
+            GameObject impactGO = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
+            Destroy(impactGO, 2f);
         }
     }
 }
