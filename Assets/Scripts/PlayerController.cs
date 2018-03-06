@@ -25,6 +25,9 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        Cursor.lockState = CursorLockMode.Locked;
+
         //Calculate movement vel as 3d vector
         float _xMovement = Input.GetAxisRaw("Horizontal");
         float _zMovement = Input.GetAxisRaw("Vertical");
