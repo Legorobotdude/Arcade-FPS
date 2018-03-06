@@ -1,0 +1,8 @@
+newmtl Pillar_Blue
+Kd 0 0 0
+d 1
+
+newmtl White
+Kd 1 1 1
+d 1
+
