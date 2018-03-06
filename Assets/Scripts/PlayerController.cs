@@ -29,12 +29,16 @@ public class PlayerController : MonoBehaviour
         float _xMovement = Input.GetAxisRaw("Horizontal");
         float _zMovement = Input.GetAxisRaw("Vertical");
 
+        //Calculate movement
+
         Vector3 _movHorizontal = transform.right * _xMovement;
         Vector3 _movVertical = transform.forward * _zMovement;
 
         Vector3 _velocity;
 
-        if (Input.GetKey(KeyCode.LeftShift) && is_grounded())
+        //Check for sprinting, can only sprint if on the ground
+
+        if (Input.GetKey(KeyCode.LeftShift) && IsGrounded())
         {
 
             _velocity = (_movHorizontal + _movVertical).normalized * runSpeed;
@@ -46,32 +50,32 @@ public class PlayerController : MonoBehaviour
 
         motor.Move(_velocity);
 
+        //Move the character for horizontal mouse movement
         float _yRot = Input.GetAxisRaw("Mouse X");
-
         Vector3 _rotation = new Vector3(0f, _yRot, 0f) * lookSensitivity;
-
         motor.Rotate(_rotation);
 
+
+        //Move the camera up and down for vertical mouse movement
         float _xRot = Input.GetAxisRaw("Mouse Y");
-
         float _cameraRotation = _xRot * lookSensitivity;
-
         motor.RotateCamera(_cameraRotation);
 
-        Vector3 _thrusterForce = Vector3.zero;
+        
 
 
-
-        //Jump
-        if (Input.GetButtonDown("Jump") && is_grounded())
+        //Calculate jump, make sure we are touching the ground
+        if (Input.GetButtonDown("Jump") && IsGrounded())
         {
             motor.handle_jump(jump_force);
         }
 
     }
-    private bool is_grounded()
+
+    //Check if we are on the ground
+    private bool IsGrounded()
     {
-        float distance_to_ground = playerCollider.bounds.extents.y;
-        return Physics.Raycast(transform.position, -Vector3.up, distance_to_ground + 0.25f);
+        float distanceToGround = playerCollider.bounds.extents.y;
+        return Physics.Raycast(transform.position, -Vector3.up, distanceToGround + 0.25f);
     }
 }
