@@ -132,6 +132,7 @@ MonoBehaviour:
   damage: 10
   range: 100
   impactForce: 100
+  fireRate: 15
   fpsCam: {fileID: 396677642}
   impactEffect: {fileID: 1943258367571952, guid: 9ceae8a8c78d0eb42975a96eb2fc31f6,
     type: 2}
