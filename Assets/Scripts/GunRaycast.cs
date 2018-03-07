@@ -9,6 +9,7 @@ public class GunRaycast : MonoBehaviour {
     public float range = 100f;
     public float impactForce = 100f;
     public float fireRate = 15f;
+    public bool autoFire = false;
 
     public Camera fpsCam;
 
@@ -16,22 +17,33 @@ public class GunRaycast : MonoBehaviour {
 
     private float nextTimeToFire = 0f;
 
-	// Use this for initialization
-	void Start () {
+    public ParticleSystem muzzleFlash;
+
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetButton("Fire1") && Time.time>= nextTimeToFire)
+        if (Input.GetButton("Fire1") && Time.time>= nextTimeToFire && autoFire)
         {
             nextTimeToFire = Time.time + 1f / fireRate;
+            Shoot();
+        }
+        else if(Input.GetButtonDown("Fire1"))
+        {
             Shoot();
         }
 	}
 
     private void Shoot()
     {
+        if(muzzleFlash != null)
+        {
+            muzzleFlash.Play();
+        }
+
         RaycastHit hit;
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
         {
