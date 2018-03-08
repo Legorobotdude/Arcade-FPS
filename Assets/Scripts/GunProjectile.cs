@@ -3,16 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GunProjectile : MonoBehaviour {
+public class GunProjectile : Gun {
 
-    public float damage = 10f;
-    public float range = 100f;
-    public float fireRate = 0f;
-
+   
     public float laserForce = 100f;
 
     public GameObject muzzle;
-    public ParticleSystem muzzleFlash;
+    
     public GameObject laserPrefab;
 
 	// Use this for initialization
@@ -25,13 +22,36 @@ public class GunProjectile : MonoBehaviour {
 
         if (Input.GetButtonDown("Fire1"))
         {
-            Fire();
+            if (Input.GetButton("Fire1") && Time.time >= nextTimeToFire && fireMode == 2)
+            {
+                nextTimeToFire = Time.time + 1f / fireRate;
+                Shoot();
+            }
+            else if (Input.GetButtonDown("Fire1") && fireMode == 0)
+            {
+                Shoot();
+            }
+            else if (Input.GetButton("Fire1") && burstCounter < burstAmount && Time.time >= nextTimeToFire && fireMode == 1)
+            {
+                nextTimeToFire = Time.time + 1f / fireRate;
+                Shoot();
+                burstCounter++;
+            }
+            else if (Input.GetButtonUp("Fire1") && burstCounter >= burstAmount && fireMode == 1)
+            {
+                burstCounter = 0;
+            }
+
+            if (Input.GetButtonDown("ToggleFireMode"))
+            {
+                ToggleFireMode();
+            }
         }
 
 
 	}
 
-    private void Fire()
+    private void Shoot()
     {
         GameObject laser = Instantiate(laserPrefab,muzzle.transform.position,muzzle.transform.rotation);
         laser.GetComponent<Rigidbody>().AddForce(-laser.transform.up * 100f);

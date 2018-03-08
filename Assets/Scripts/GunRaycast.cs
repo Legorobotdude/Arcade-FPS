@@ -37,16 +37,18 @@ public class GunRaycast : Gun {
             Shoot();
             burstCounter++;
         }
-        else if (Input.GetButtonUp("Fire1") && burstCounter >= burstAmount && fireMode == 1)
+       else if (Input.GetButtonUp("Fire1") && burstCounter >= burstAmount && fireMode == 1)
         {
             burstCounter = 0;
         }
 
-        if (Input.GetButtonDown("ToggleFireMode"))
+        if (Input.GetButtonDown("ToggleFireMode") && !Input.GetButton("Fire1"))
         {
             ToggleFireMode();
+
         }
-	}
+
+    }
 
     private void Shoot()
     {

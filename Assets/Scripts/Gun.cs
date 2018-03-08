@@ -28,13 +28,19 @@ public abstract class Gun : MonoBehaviour {
     [SerializeField] protected int burstAmount = 3;
     protected int burstCounter = 0;
 
+
     public void ToggleFireMode()
     {
         if (autoFire&&burstFire&&semiAutoFire)
         {
-            if (fireMode == 0 || fireMode == 1)
+            if (fireMode == 0)
             {
-                fireMode++;
+                fireMode=1;
+                burstCounter = 0;
+            }
+            else if(fireMode == 1)
+            {
+                fireMode = 2;
             }
             else
             {
@@ -57,6 +63,7 @@ public abstract class Gun : MonoBehaviour {
             if (fireMode == 0)
             {
                 fireMode = 1;
+                burstCounter = 0;
             }
             else
             {
@@ -72,6 +79,7 @@ public abstract class Gun : MonoBehaviour {
             else
             {
                 fireMode = 1;
+                burstCounter = 0;
             }
         }
 
