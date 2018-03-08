@@ -6,13 +6,13 @@ public abstract class Gun : MonoBehaviour {
 
     public float damage = 10f;
     public float range = 100f;
-    public float impactForce = 100f;
-
-
+    
     public float fireRate = 15f;
+
+
     [SerializeField] protected bool semiAutoFire = true;
     [SerializeField] protected bool burstFire = true;
-    [SerializeField]protected bool autoFire = true;
+    [SerializeField] protected bool autoFire = true;
     
     
    

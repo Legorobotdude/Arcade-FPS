@@ -5,15 +5,9 @@ using UnityEngine;
 
 public class GunRaycast : Gun {
 
-  
+  public Camera fpsCam;
 
-    public Camera fpsCam;
-
-    
-
-    
-
-    
+    public float impactForce = 100f;
 
     // Use this for initialization
     void Start () {
