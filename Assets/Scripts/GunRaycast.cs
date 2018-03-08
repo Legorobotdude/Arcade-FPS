@@ -3,21 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GunRaycast : MonoBehaviour {
+public class GunRaycast : Gun {
 
-    public float damage = 10f;
-    public float range = 100f;
-    public float impactForce = 100f;
-    public float fireRate = 15f;
-    public bool autoFire = false;
+  
 
     public Camera fpsCam;
 
-    public GameObject impactEffect;
+    
 
-    private float nextTimeToFire = 0f;
+    
 
-    public ParticleSystem muzzleFlash;
+    
 
     // Use this for initialization
     void Start () {
@@ -26,14 +22,29 @@ public class GunRaycast : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetButton("Fire1") && Time.time>= nextTimeToFire && autoFire)
+        if (Input.GetButton("Fire1") && Time.time >= nextTimeToFire && fireMode == 2)
         {
             nextTimeToFire = Time.time + 1f / fireRate;
             Shoot();
         }
-        else if(Input.GetButtonDown("Fire1"))
+        else if (Input.GetButtonDown("Fire1") && fireMode == 0)
         {
             Shoot();
+        }
+        else if (Input.GetButton("Fire1") && burstCounter < burstAmount && Time.time >= nextTimeToFire && fireMode == 1)
+        {
+            nextTimeToFire = Time.time + 1f / fireRate;
+            Shoot();
+            burstCounter++;
+        }
+        else if (Input.GetButtonUp("Fire1") && burstCounter >= burstAmount && fireMode == 1)
+        {
+            burstCounter = 0;
+        }
+
+        if (Input.GetButtonDown("ToggleFireMode"))
+        {
+            ToggleFireMode();
         }
 	}
 
