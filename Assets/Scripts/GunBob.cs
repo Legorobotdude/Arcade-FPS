@@ -10,15 +10,15 @@ public class GunBob : MonoBehaviour
     [SerializeField]
     private float bobDistance = 1f;
     
-    private Transform Gun;
+    private Transform gun;
 
     private float horizontal, vertical, timer, waveSlice;
     private Vector3 midPoint;
 
     void Start()
     {
-        Gun = gameObject.transform;
-        midPoint = Gun.localPosition;
+        gun = gameObject.transform;
+        midPoint = gun.localPosition;
 
     }
 
@@ -27,7 +27,7 @@ public class GunBob : MonoBehaviour
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
 
-        Vector3 localPosition = Gun.localPosition;
+        Vector3 localPosition = gun.localPosition;
 
         if (Mathf.Abs(horizontal) == 0 && Mathf.Abs(vertical) == 0)
         {
@@ -57,6 +57,6 @@ public class GunBob : MonoBehaviour
             localPosition.x = midPoint.x;
         }
 
-        Gun.localPosition = localPosition;
+        gun.localPosition = localPosition;
     }
 }

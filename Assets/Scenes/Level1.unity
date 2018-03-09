@@ -147,6 +147,19 @@ MonoBehaviour:
   burstAmount: 3
   fpsCam: {fileID: 396677642}
   impactForce: 100
+--- !u!114 &19529504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 19529499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00b3d8a23b572654384ea82f9ec2dd06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bobSpeed: 0.03
+  bobDistance: 0.03
 --- !u!43 &25717335
 Mesh:
   m_ObjectHideFlags: 0
@@ -8480,6 +8493,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: -180.00002, z: 0}
+--- !u!1 &1087393663 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1775412684214486, guid: b9561aa12c8047f40929aae36eeb67f5,
+    type: 2}
+  m_PrefabInternal: {fileID: 1818987494}
+--- !u!114 &1087393667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1087393663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00b3d8a23b572654384ea82f9ec2dd06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bobSpeed: 0.03
+  bobDistance: 0.03
 --- !u!1001 &1123945349
 Prefab:
   m_ObjectHideFlags: 0
@@ -8857,11 +8888,30 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1 &1722123370 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1655999287321692, guid: b9561aa12c8047f40929aae36eeb67f5,
+    type: 2}
+  m_PrefabInternal: {fileID: 1818987494}
 --- !u!4 &1722123374 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4306334217739282, guid: b9561aa12c8047f40929aae36eeb67f5,
     type: 2}
   m_PrefabInternal: {fileID: 1818987494}
+--- !u!114 &1722123375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1722123370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64297def6d7f4f74db93310fd015a3c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bobbingSpeed: 0.05
+  bobbingAmount: 0.1
+  midpoint: 0.53
 --- !u!1001 &1818987494
 Prefab:
   m_ObjectHideFlags: 0
@@ -9172,6 +9222,7 @@ GameObject:
   - component: {fileID: 2089631459}
   - component: {fileID: 2089631462}
   - component: {fileID: 2089631460}
+  - component: {fileID: 2089631461}
   m_Layer: 8
   m_Name: GunCamera
   m_TagString: Untagged
@@ -9204,6 +9255,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   profile: {fileID: 11400000, guid: 18218de550db3f64eb9022929b65c962, type: 2}
+--- !u!114 &2089631461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2089631458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64297def6d7f4f74db93310fd015a3c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bobbingSpeed: 0.05
+  bobbingAmount: 0.1
+  midpoint: 0
 --- !u!20 &2089631462
 Camera:
   m_ObjectHideFlags: 0
