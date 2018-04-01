@@ -137,9 +137,12 @@ MonoBehaviour:
   damage: 10
   range: 100
   fireRate: 15
+  maxAmmo: 10
+  reloadTime: 1
   semiAutoFire: 1
   burstFire: 1
   autoFire: 1
+  cameraShake: {fileID: 1722123376}
   fireMode: 2
   impactEffect: {fileID: 1943258367571952, guid: 9ceae8a8c78d0eb42975a96eb2fc31f6,
     type: 2}
@@ -8912,6 +8915,17 @@ MonoBehaviour:
   bobbingSpeed: 0.05
   bobbingAmount: 0.1
   midpoint: 0.53
+--- !u!114 &1722123376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1722123370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f7d6086049446a4890b196043315cf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1818987494
 Prefab:
   m_ObjectHideFlags: 0
@@ -9079,6 +9093,16 @@ Prefab:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 114169403544723174, guid: b9561aa12c8047f40929aae36eeb67f5,
+        type: 2}
+      propertyPath: cameraShake
+      value: 
+      objectReference: {fileID: 1722123376}
+    - target: {fileID: 114722381021466286, guid: b9561aa12c8047f40929aae36eeb67f5,
+        type: 2}
+      propertyPath: cameraShake
+      value: 
+      objectReference: {fileID: 1722123376}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b9561aa12c8047f40929aae36eeb67f5, type: 2}
   m_IsPrefabParent: 0

@@ -20,8 +20,8 @@ public abstract class Gun : MonoBehaviour {
     [SerializeField] protected bool semiAutoFire = true;
     [SerializeField] protected bool burstFire = true;
     [SerializeField] protected bool autoFire = true;
-    
-    
+
+    public CameraShake cameraShake;
    
     [SerializeField][Header("0=Semi Auto, 1 = burst, 2 = auto")] protected int fireMode = 0;
 
@@ -38,6 +38,7 @@ public abstract class Gun : MonoBehaviour {
     void Start()
     {
         currentAmmo = maxAmmo;
+        //StartCoroutine(cameraShake.Shake(1f,0.15f));
     }
 
     void OnEnable()
