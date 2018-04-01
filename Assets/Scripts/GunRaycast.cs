@@ -9,10 +9,7 @@ public class GunRaycast : Gun {
 
     public float impactForce = 100f;
 
-    // Use this for initialization
-    void Start () {
-		
-	}
+   
 
 
 

@@ -12,10 +12,6 @@ public class GunProjectile : Gun {
     
     public GameObject laserPrefab;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
 	
 
     protected override void Shoot()

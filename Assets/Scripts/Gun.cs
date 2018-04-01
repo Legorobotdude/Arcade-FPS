@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,6 +10,12 @@ public abstract class Gun : MonoBehaviour {
     
     public float fireRate = 15f;
 
+    public int maxAmmo = 10;
+    protected int currentAmmo;
+    public float reloadTime = 1f;
+    protected bool isReloading = false;
+
+    //Animator anim;
 
     [SerializeField] protected bool semiAutoFire = true;
     [SerializeField] protected bool burstFire = true;
@@ -27,6 +34,18 @@ public abstract class Gun : MonoBehaviour {
     protected float nextTimeToFire = 0f;
     [SerializeField] protected int burstAmount = 3;
     protected int burstCounter = 0;
+
+    void Start()
+    {
+        currentAmmo = maxAmmo;
+    }
+
+    void OnEnable()
+    {
+        isReloading = false;
+        //anim.SetBool("Reloading",false);
+    }
+
 
 
     public void ToggleFireMode()
@@ -89,18 +108,30 @@ public abstract class Gun : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        if (isReloading)
+        {
+            return;
+        }
+        if (currentAmmo <= 0)
+        {
+            StartCoroutine(Reload());
+            return;
+        }
         if (Input.GetButton("Fire1") && Time.time >= nextTimeToFire && fireMode == 2)
         {
             nextTimeToFire = Time.time + 1f / fireRate;
+            currentAmmo--;
             Shoot();
         }
         else if (Input.GetButtonDown("Fire1") && fireMode == 0)
         {
+            currentAmmo--;
             Shoot();
         }
         else if (Input.GetButton("Fire1") && burstCounter < burstAmount && Time.time >= nextTimeToFire && fireMode == 1)
         {
             nextTimeToFire = Time.time + 1f / fireRate;
+            currentAmmo--;
             Shoot();
             burstCounter++;
         }
@@ -115,6 +146,16 @@ public abstract class Gun : MonoBehaviour {
 
         }
 
+    }
+
+    IEnumerator Reload()
+    {
+        Debug.Log("Reloading");
+        //anim.SetBool("Reloading", true);
+        yield return new WaitForSeconds(reloadTime);
+        //anim.SetBool("Reloading", false);
+        currentAmmo = maxAmmo;
+        isReloading = false;
     }
 
     abstract protected void Shoot();
