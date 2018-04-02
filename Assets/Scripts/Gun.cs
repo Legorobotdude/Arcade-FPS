@@ -113,7 +113,7 @@ public abstract class Gun : MonoBehaviour {
         {
             return;
         }
-        if (currentAmmo <= 0)
+        if (currentAmmo <= 0 || Input.GetButton("Reload"))
         {
             StartCoroutine(Reload());
             return;
@@ -151,6 +151,7 @@ public abstract class Gun : MonoBehaviour {
 
     IEnumerator Reload()
     {
+        isReloading = true;
         Debug.Log("Reloading");
         //anim.SetBool("Reloading", true);
         yield return new WaitForSeconds(reloadTime);
