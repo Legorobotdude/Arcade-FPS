@@ -38,12 +38,12 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -123,6 +123,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4369354587609052, guid: b9561aa12c8047f40929aae36eeb67f5,
     type: 2}
   m_PrefabInternal: {fileID: 1818987494}
+--- !u!95 &19529501 stripped
+Animator:
+  m_PrefabParentObject: {fileID: 95233498211790072, guid: b9561aa12c8047f40929aae36eeb67f5,
+    type: 2}
+  m_PrefabInternal: {fileID: 1818987494}
 --- !u!114 &19529503
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,6 +144,7 @@ MonoBehaviour:
   fireRate: 15
   maxAmmo: 90
   reloadTime: 1
+  anim: {fileID: 19529501}
   semiAutoFire: 1
   burstFire: 1
   autoFire: 1
@@ -10644,6 +10650,11 @@ GameObject:
   m_PrefabParentObject: {fileID: 1775412684214486, guid: b9561aa12c8047f40929aae36eeb67f5,
     type: 2}
   m_PrefabInternal: {fileID: 1818987494}
+--- !u!95 &1087393666 stripped
+Animator:
+  m_PrefabParentObject: {fileID: 95275146042841540, guid: b9561aa12c8047f40929aae36eeb67f5,
+    type: 2}
+  m_PrefabInternal: {fileID: 1818987494}
 --- !u!114 &1087393667
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11115,11 +11126,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1906805425085612, guid: b9561aa12c8047f40929aae36eeb67f5, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1775412684214486, guid: b9561aa12c8047f40929aae36eeb67f5, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114169403544723174, guid: b9561aa12c8047f40929aae36eeb67f5,
         type: 2}
@@ -11266,6 +11277,21 @@ Prefab:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: b29fae60c9d7abc4dbcdcda20affb4a2, type: 2}
+    - target: {fileID: 95233498211790072, guid: b9561aa12c8047f40929aae36eeb67f5,
+        type: 2}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: bab15b89e06ac784fa7270d7836d7b25, type: 2}
+    - target: {fileID: 114722381021466286, guid: b9561aa12c8047f40929aae36eeb67f5,
+        type: 2}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 1087393666}
+    - target: {fileID: 95275146042841540, guid: b9561aa12c8047f40929aae36eeb67f5,
+        type: 2}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 489867536d5fc5041b3f2128e01eaa9c, type: 2}
     m_RemovedComponents:
     - {fileID: 114169403544723174, guid: b9561aa12c8047f40929aae36eeb67f5, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: b9561aa12c8047f40929aae36eeb67f5, type: 2}
@@ -11275,7 +11301,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh13176
+  m_Name: pb_Mesh12580
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2

@@ -15,7 +15,7 @@ public abstract class Gun : MonoBehaviour {
     public float reloadTime = 1f;
     protected bool isReloading = false;
 
-    //Animator anim;
+    [SerializeField] Animator anim;
 
     [SerializeField] protected bool semiAutoFire = true;
     [SerializeField] protected bool burstFire = true;
@@ -113,7 +113,7 @@ public abstract class Gun : MonoBehaviour {
         {
             return;
         }
-        if (currentAmmo <= 0 || Input.GetButton("Reload"))
+        if (currentAmmo <= 0 || (Input.GetButton("Reload")&&currentAmmo!=maxAmmo))
         {
             StartCoroutine(Reload());
             return;
@@ -153,6 +153,8 @@ public abstract class Gun : MonoBehaviour {
     {
         isReloading = true;
         //Debug.Log("Reloading");
+        if (anim != null)
+            anim.SetTrigger("Reload");
         //anim.SetBool("Reloading", true);
         yield return new WaitForSeconds(reloadTime);
         //anim.SetBool("Reloading", false);
