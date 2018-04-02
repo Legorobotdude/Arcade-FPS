@@ -10,6 +10,10 @@ public class Minimap : MonoBehaviour {
     void Start()
     {
         yPos = transform.position.y;
+        if (player == null)
+        {
+            player = GameObject.FindGameObjectWithTag("Player").transform;
+        }
     }
 
 

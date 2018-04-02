@@ -35,10 +35,14 @@ public abstract class Gun : MonoBehaviour {
     [SerializeField] protected int burstAmount = 3;
     protected int burstCounter = 0;
 
+    protected AudioSource audioSource;
+    [SerializeField]AudioClip fireSound;
+
     void Start()
     {
         currentAmmo = maxAmmo;
         //StartCoroutine(cameraShake.Shake(1f,0.15f));
+        audioSource = GetComponent<AudioSource>();
     }
 
     void OnEnable()
@@ -123,17 +127,20 @@ public abstract class Gun : MonoBehaviour {
             nextTimeToFire = Time.time + 1f / fireRate;
             currentAmmo--;
             Shoot();
+            audioSource.PlayOneShot(fireSound);
         }
         else if (Input.GetButtonDown("Fire1") && fireMode == 0)
         {
             currentAmmo--;
             Shoot();
+            audioSource.PlayOneShot(fireSound);
         }
         else if (Input.GetButton("Fire1") && burstCounter < burstAmount && Time.time >= nextTimeToFire && fireMode == 1)
         {
             nextTimeToFire = Time.time + 1f / fireRate;
             currentAmmo--;
             Shoot();
+            audioSource.PlayOneShot(fireSound);
             burstCounter++;
         }
         else if (Input.GetButtonUp("Fire1") && burstCounter >= burstAmount && fireMode == 1)
