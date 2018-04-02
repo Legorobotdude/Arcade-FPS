@@ -152,7 +152,7 @@ public abstract class Gun : MonoBehaviour {
     IEnumerator Reload()
     {
         isReloading = true;
-        Debug.Log("Reloading");
+        //Debug.Log("Reloading");
         //anim.SetBool("Reloading", true);
         yield return new WaitForSeconds(reloadTime);
         //anim.SetBool("Reloading", false);
