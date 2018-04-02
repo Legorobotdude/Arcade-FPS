@@ -142,7 +142,7 @@ MonoBehaviour:
   semiAutoFire: 1
   burstFire: 1
   autoFire: 1
-  cameraShake: {fileID: 1722123376}
+  cameraShake: {fileID: 0}
   fireMode: 2
   impactEffect: {fileID: 1943258367571952, guid: 9ceae8a8c78d0eb42975a96eb2fc31f6,
     type: 2}
