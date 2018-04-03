@@ -117,7 +117,7 @@ public abstract class Gun : MonoBehaviour {
         {
             return;
         }
-        if (currentAmmo <= 0 || (Input.GetButton("Reload")&&currentAmmo!=maxAmmo))
+        if (currentAmmo <= 0 || ((Input.GetButton("Reload")&&currentAmmo!=maxAmmo)))
         {
             StartCoroutine(Reload());
             return;
