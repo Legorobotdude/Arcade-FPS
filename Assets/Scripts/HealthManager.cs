@@ -23,7 +23,7 @@ public class HealthManager : MonoBehaviour {
             Die();
     }
 
-    void Die()
+    virtual protected void Die()
     {
         Destroy(this.gameObject,1f);
     }

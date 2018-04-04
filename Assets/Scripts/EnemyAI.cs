@@ -6,6 +6,7 @@ public class EnemyAI : HealthManager {
 
 	GameObject player;
 	Rigidbody rigidBody;
+	Material[] m_Material;
 
 	[SerializeField]float randomForce = 10f;
 	[SerializeField]float towardsPlayerForce = 40f;
@@ -21,6 +22,7 @@ public class EnemyAI : HealthManager {
 		rigidBody = GetComponent<Rigidbody>();
 		InvokeRepeating("ApplyRandomForce",1f,randomForceTiming);
 		InvokeRepeating("ApplyForceTowardsPlayer",1f,forceTowardsPlayerTiming);
+		m_Material = GetComponent<Renderer>().materials;
 	}
 	
 	// Update is called once per frame
@@ -41,8 +43,18 @@ public class EnemyAI : HealthManager {
 	{
 		Vector3 aim = player.transform.position - transform.position;
 		aim = aim/aim.magnitude;
-		Debug.Log(aim);
+		//Debug.Log(aim);
 		//rigidBody.AddRelativeForce(new Vector3(0f,0f,10f));
 		rigidBody.AddForce(towardsPlayerForce*aim);
+	}
+
+	override protected void Die()
+	{
+		Debug.Log("Die new");
+		foreach (Material mat in m_Material)
+		{
+			mat.SetColor("_EmissionColor", Color.yellow* Mathf.LinearToGammaSpace(5));
+		}
+		//m_Material.SetColor ("_EmissionColor", Color.yellow);
 	}
 }
