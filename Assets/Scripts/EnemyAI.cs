@@ -53,7 +53,8 @@ public class EnemyAI : HealthManager {
 		Debug.Log("Die new");
 		foreach (Material mat in m_Material)
 		{
-			mat.SetColor("_EmissionColor", Color.yellow* Mathf.LinearToGammaSpace(5));
+			//mat.SetColor("_EmissionColor", Color.yellow* Mathf.LinearToGammaSpace(5));
+			mat.SetColor("_EmissionColor", Color.yellow*5);
 		}
 		//m_Material.SetColor ("_EmissionColor", Color.yellow);
 	}
