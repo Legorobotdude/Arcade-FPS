@@ -33,7 +33,8 @@ public class EnemyAI : MonoBehaviour {
 	}
 	void ApplyForceTowardsPlayer()
 	{
+		Vector3 aim = player.transform.position - transform.position;
 		//rigidBody.AddRelativeForce(new Vector3(0f,0f,10f));
-		rigidBody.AddRelativeForce(0f,0f,10f);
+		rigidBody.AddRelativeForce(10f*aim);
 	}
 }
