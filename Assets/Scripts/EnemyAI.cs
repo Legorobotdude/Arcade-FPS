@@ -7,6 +7,9 @@ public class EnemyAI : MonoBehaviour {
 	GameObject player;
 	Rigidbody rigidBody;
 
+	float randomForce = 10f;
+	float towardsPlayerForce = 20f;
+
 	//float tempTime;
 
 	// Use this for initialization
@@ -29,12 +32,12 @@ public class EnemyAI : MonoBehaviour {
 
 	void ApplyRandomForce()
 	{
-		rigidBody.AddForce(new Vector3(Random.Range(0f,10f),Random.Range(0f,10f),Random.Range(0f,10f)));
+		rigidBody.AddForce(new Vector3(Random.Range(-randomForce,randomForce),Random.Range(-randomForce,randomForce),Random.Range(-randomForce,randomForce)));
 	}
 	void ApplyForceTowardsPlayer()
 	{
 		Vector3 aim = player.transform.position - transform.position;
 		//rigidBody.AddRelativeForce(new Vector3(0f,0f,10f));
-		rigidBody.AddRelativeForce(10f*aim);
+		rigidBody.AddRelativeForce(towardsPlayerForce*aim);
 	}
 }
