@@ -41,7 +41,8 @@ public class EnemyAI : HealthManager {
 	{
 		Vector3 aim = player.transform.position - transform.position;
 		aim = aim/aim.magnitude;
+		Debug.Log(aim);
 		//rigidBody.AddRelativeForce(new Vector3(0f,0f,10f));
-		rigidBody.AddRelativeForce(towardsPlayerForce*aim);
+		rigidBody.AddForce(towardsPlayerForce*aim);
 	}
 }
