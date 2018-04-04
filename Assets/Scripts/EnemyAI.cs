@@ -33,6 +33,18 @@ public class EnemyAI : HealthManager {
 		// {
 		// 	rigidBody.AddForce(new Vector3(10f,0f,0f));
 		// }
+		if (!isDead)
+		{
+
+			foreach (Material mat in m_Material)
+			{
+				//mat.SetColor("_EmissionColor", Color.yellow* Mathf.LinearToGammaSpace(5));
+				mat.SetColor("_EmissionColor", Color.red*5*currentHealth/maxHealth);
+				//Debug.Log("Current health" + currentHealth);
+				//Debug.Log("Max Health" + maxHealth);
+				//Debug.Log(currentHealth/maxHealth);
+			}
+		}
 	}
 
 	void ApplyRandomForce()
