@@ -3315,7 +3315,7 @@ Camera:
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
+  m_AllowDynamicResolution: 1
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -3395,6 +3395,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  randomForce: 10
+  towardsPlayerForce: 40
+  randomForceTiming: 1
+  forceTowardsPlayerTiming: 1
 --- !u!64 &261888501
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9896,6 +9900,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  randomForce: 10
+  towardsPlayerForce: 40
+  randomForceTiming: 1
+  forceTowardsPlayerTiming: 1
 --- !u!64 &843128294
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -14581,6 +14589,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  randomForce: 10
+  towardsPlayerForce: 40
+  randomForceTiming: 1
+  forceTowardsPlayerTiming: 1
 --- !u!43 &1693923508
 Mesh:
   m_ObjectHideFlags: 0
@@ -14783,6 +14795,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  randomForce: 10
+  towardsPlayerForce: 40
+  randomForceTiming: 1
+  forceTowardsPlayerTiming: 1
 --- !u!64 &1693961840
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -18715,6 +18731,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  randomForce: 10
+  towardsPlayerForce: 40
+  randomForceTiming: 1
+  forceTowardsPlayerTiming: 1
 --- !u!54 &2071143962
 Rigidbody:
   m_ObjectHideFlags: 0
