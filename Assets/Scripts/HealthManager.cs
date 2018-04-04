@@ -25,6 +25,6 @@ public class HealthManager : MonoBehaviour {
 
     void Die()
     {
-        //Destroy
+        Destroy(this.gameObject,1f);
     }
 }
