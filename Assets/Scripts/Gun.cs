@@ -127,20 +127,20 @@ public abstract class Gun : MonoBehaviour {
             nextTimeToFire = Time.time + 1f / fireRate;
             currentAmmo--;
             Shoot();
-            audioSource.PlayOneShot(fireSound);
+            audioSource.PlayOneShot(fireSound,UnityEngine.Random.Range(0.7f,1f));
         }
         else if (Input.GetButtonDown("Fire1") && fireMode == 0)
         {
             currentAmmo--;
             Shoot();
-            audioSource.PlayOneShot(fireSound);
+            audioSource.PlayOneShot(fireSound, UnityEngine.Random.Range(0.7f, 1f));
         }
         else if (Input.GetButton("Fire1") && burstCounter < burstAmount && Time.time >= nextTimeToFire && fireMode == 1)
         {
             nextTimeToFire = Time.time + 1f / fireRate;
             currentAmmo--;
             Shoot();
-            audioSource.PlayOneShot(fireSound);
+            audioSource.PlayOneShot(fireSound, UnityEngine.Random.Range(0.7f, 1f));
             burstCounter++;
         }
         else if (Input.GetButtonUp("Fire1") && burstCounter >= burstAmount && fireMode == 1)
