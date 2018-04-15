@@ -36,11 +36,7 @@ public class PlayerMotor : MonoBehaviour
 
     }
 
-    public void handle_jump(float jump_force)
-    {
-        jump = jump_force;
-    }
-
+    
     private void FixedUpdate()
     {
         PerformMovement();

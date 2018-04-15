@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
 
         //Check for sprinting, can only sprint if on the ground
 
-        if (Input.GetKey(KeyCode.LeftShift) && IsGrounded())
+        if (Input.GetKey(KeyCode.LeftShift))
         {
 
             _velocity = (_movHorizontal + _movVertical).normalized * runSpeed;
@@ -67,11 +67,7 @@ public class PlayerController : MonoBehaviour
         
 
 
-        //Calculate jump, make sure we are touching the ground
-        if (Input.GetButtonDown("Jump") && IsGrounded())
-        {
-            motor.handle_jump(jump_force);
-        }
+        
 
     }
 
