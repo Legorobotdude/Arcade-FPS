@@ -40,14 +40,14 @@ public abstract class Gun : MonoBehaviour {
     protected AudioSource audioSource;
     [SerializeField]AudioClip fireSound;
 
-    protected GameObject player;
+    protected Player player;
 
     void Start()
     {
         currentAmmo = maxAmmo;
         //StartCoroutine(cameraShake.Shake(1f,0.15f));
         audioSource = GetComponent<AudioSource>();
-        player = transform.root.gameObject;
+        player = transform.root.gameObject.GetComponent<Player>();
     }
 
     void OnEnable()
@@ -179,7 +179,8 @@ public abstract class Gun : MonoBehaviour {
     void ShootAbstract()
     {
         audioSource.PlayOneShot(fireSound, UnityEngine.Random.Range(0.7f, 1f));
-        player.GetComponent<Rigidbody>().AddForce(transform.forward*firingForce);
+        //player.GetComponent<Rigidbody>().AddForce(transform.forward*firingForce);
+        
     }
 
 }
