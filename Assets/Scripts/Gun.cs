@@ -178,7 +178,7 @@ public abstract class Gun : MonoBehaviour {
 
     void ShootAbstract()
     {
-        audioSource.PlayOneShot(fireSound);
+        audioSource.PlayOneShot(fireSound, UnityEngine.Random.Range(0.7f, 1f));
         player.GetComponent<Rigidbody>().AddForce(transform.forward*firingForce);
     }
 
