@@ -35,14 +35,19 @@ public abstract class Gun : MonoBehaviour {
     [SerializeField] protected int burstAmount = 3;
     protected int burstCounter = 0;
 
+    [SerializeField]float firingForce = 100f;
+
     protected AudioSource audioSource;
     [SerializeField]AudioClip fireSound;
+
+    protected GameObject player;
 
     void Start()
     {
         currentAmmo = maxAmmo;
         //StartCoroutine(cameraShake.Shake(1f,0.15f));
         audioSource = GetComponent<AudioSource>();
+        player = transform.root.gameObject;
     }
 
     void OnEnable()
@@ -127,20 +132,20 @@ public abstract class Gun : MonoBehaviour {
             nextTimeToFire = Time.time + 1f / fireRate;
             currentAmmo--;
             Shoot();
-            audioSource.PlayOneShot(fireSound);
+            ShootAbstract();
         }
         else if (Input.GetButtonDown("Fire1") && fireMode == 0)
         {
             currentAmmo--;
             Shoot();
-            audioSource.PlayOneShot(fireSound);
+            ShootAbstract();
         }
         else if (Input.GetButton("Fire1") && burstCounter < burstAmount && Time.time >= nextTimeToFire && fireMode == 1)
         {
             nextTimeToFire = Time.time + 1f / fireRate;
             currentAmmo--;
             Shoot();
-            audioSource.PlayOneShot(fireSound);
+           ShootAbstract();
             burstCounter++;
         }
         else if (Input.GetButtonUp("Fire1") && burstCounter >= burstAmount && fireMode == 1)
@@ -170,5 +175,11 @@ public abstract class Gun : MonoBehaviour {
     }
 
     abstract protected void Shoot();
+
+    void ShootAbstract()
+    {
+        audioSource.PlayOneShot(fireSound);
+        player.GetComponent<Rigidbody>().AddForce(transform.forward*firingForce);
+    }
 
 }

@@ -233,8 +233,9 @@ MonoBehaviour:
   fireMode: 2
   impactEffect: {fileID: 1943258367571952, guid: 9ceae8a8c78d0eb42975a96eb2fc31f6,
     type: 2}
-  muzzleFlash: {fileID: 171871375}
+  muzzleFlash: {fileID: 410669239}
   burstAmount: 3
+  firingForce: 100
   fireSound: {fileID: 8300000, guid: 395d8be54571c424cafaee95f2415df9, type: 3}
   fpsCam: {fileID: 396677642}
   impactForce: 100
@@ -3394,7 +3395,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba29c103c9c7d4a448ebede892713f64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  isDead: 0
+  maxHealth: 100
   randomForce: 10
   towardsPlayerForce: 40
   randomForceTiming: 1
@@ -5286,6 +5288,11 @@ Camera:
   m_PrefabParentObject: {fileID: 20355403973716424, guid: b9561aa12c8047f40929aae36eeb67f5,
     type: 2}
   m_PrefabInternal: {fileID: 1818987494}
+--- !u!198 &410669239 stripped
+ParticleSystem:
+  m_PrefabParentObject: {fileID: 198138622565325818, guid: ee202dfc426453640bde6cbcb1f53e66,
+    type: 2}
+  m_PrefabInternal: {fileID: 868394406}
 --- !u!4 &478378695 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4327301938351504, guid: b9561aa12c8047f40929aae36eeb67f5,
@@ -9899,7 +9906,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba29c103c9c7d4a448ebede892713f64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  isDead: 0
+  maxHealth: 100
   randomForce: 10
   towardsPlayerForce: 40
   randomForceTiming: 1
@@ -11519,6 +11527,58 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &868394406
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 19529500}
+    m_Modifications:
+    - target: {fileID: 4600654624056124, guid: ee202dfc426453640bde6cbcb1f53e66, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 50.071117
+      objectReference: {fileID: 0}
+    - target: {fileID: 4600654624056124, guid: ee202dfc426453640bde6cbcb1f53e66, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 6.614288
+      objectReference: {fileID: 0}
+    - target: {fileID: 4600654624056124, guid: ee202dfc426453640bde6cbcb1f53e66, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -33.038174
+      objectReference: {fileID: 0}
+    - target: {fileID: 4600654624056124, guid: ee202dfc426453640bde6cbcb1f53e66, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4600654624056124, guid: ee202dfc426453640bde6cbcb1f53e66, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4600654624056124, guid: ee202dfc426453640bde6cbcb1f53e66, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4600654624056124, guid: ee202dfc426453640bde6cbcb1f53e66, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4600654624056124, guid: ee202dfc426453640bde6cbcb1f53e66, type: 2}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 198138622565325818, guid: ee202dfc426453640bde6cbcb1f53e66,
+        type: 2}
+      propertyPath: ShapeModule.angle
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 198138622565325818, guid: ee202dfc426453640bde6cbcb1f53e66,
+        type: 2}
+      propertyPath: randomSeed
+      value: 1553777323
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: ee202dfc426453640bde6cbcb1f53e66, type: 2}
+  m_IsPrefabParent: 0
 --- !u!43 &895062458
 Mesh:
   m_ObjectHideFlags: 0
@@ -14510,7 +14570,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbdb3e9c3d12fc74fb852c2af458cf1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  isDead: 0
+  maxHealth: 100
 --- !u!23 &1642096435
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -14588,7 +14649,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba29c103c9c7d4a448ebede892713f64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  isDead: 0
+  maxHealth: 100
   randomForce: 10
   towardsPlayerForce: 40
   randomForceTiming: 1
@@ -14794,7 +14856,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba29c103c9c7d4a448ebede892713f64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  isDead: 0
+  maxHealth: 100
   randomForce: 10
   towardsPlayerForce: 40
   randomForceTiming: 1
@@ -16445,7 +16508,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbdb3e9c3d12fc74fb852c2af458cf1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  isDead: 0
+  maxHealth: 100
 --- !u!23 &1709792976
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -16807,6 +16871,11 @@ Prefab:
       propertyPath: fireSound
       value: 
       objectReference: {fileID: 8300000, guid: 395d8be54571c424cafaee95f2415df9, type: 3}
+    - target: {fileID: 54149276405239646, guid: b9561aa12c8047f40929aae36eeb67f5,
+        type: 2}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114169403544723174, guid: b9561aa12c8047f40929aae36eeb67f5, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: b9561aa12c8047f40929aae36eeb67f5, type: 2}
@@ -18730,7 +18799,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba29c103c9c7d4a448ebede892713f64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  isDead: 0
+  maxHealth: 100
   randomForce: 10
   towardsPlayerForce: 40
   randomForceTiming: 1

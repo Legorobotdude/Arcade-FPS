@@ -1,0 +1,4 @@
+Slingshot force towards enemies
+Jetpack controls
+Laser beam particles for shooting
+Light on contact with walls/collisions
