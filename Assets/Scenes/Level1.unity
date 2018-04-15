@@ -11724,7 +11724,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-95628
+  m_Name: pb_Mesh12140
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -16876,6 +16876,21 @@ Prefab:
       propertyPath: m_UseGravity
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 54149276405239646, guid: b9561aa12c8047f40929aae36eeb67f5,
+        type: 2}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114923315370247120, guid: b9561aa12c8047f40929aae36eeb67f5,
+        type: 2}
+      propertyPath: tetherStrength
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 54149276405239646, guid: b9561aa12c8047f40929aae36eeb67f5,
+        type: 2}
+      propertyPath: m_Drag
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114169403544723174, guid: b9561aa12c8047f40929aae36eeb67f5, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: b9561aa12c8047f40929aae36eeb67f5, type: 2}
@@ -17025,7 +17040,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh12602
+  m_Name: pb_Mesh12040
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
