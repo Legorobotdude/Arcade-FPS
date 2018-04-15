@@ -225,6 +225,7 @@ MonoBehaviour:
   fireRate: 15
   maxAmmo: 90
   reloadTime: 1
+  unlimitedAmmo: 1
   anim: {fileID: 19529501}
   semiAutoFire: 1
   burstFire: 1
@@ -11724,7 +11725,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh12140
+  m_Name: pb_Mesh26480
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -16891,6 +16892,11 @@ Prefab:
       propertyPath: m_Drag
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 54149276405239646, guid: b9561aa12c8047f40929aae36eeb67f5,
+        type: 2}
+      propertyPath: m_CollisionDetection
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114169403544723174, guid: b9561aa12c8047f40929aae36eeb67f5, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: b9561aa12c8047f40929aae36eeb67f5, type: 2}
@@ -17040,7 +17046,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh12040
+  m_Name: pb_Mesh26380
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2

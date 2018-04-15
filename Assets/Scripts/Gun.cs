@@ -7,13 +7,15 @@ public abstract class Gun : MonoBehaviour {
 
     public float damage = 10f;
     public float range = 100f;
-    
+
     public float fireRate = 15f;
 
     public int maxAmmo = 10;
     protected int currentAmmo;
     public float reloadTime = 1f;
     protected bool isReloading = false;
+
+    [SerializeField] bool unlimitedAmmo = false;
 
     [SerializeField] Animator anim;
 
@@ -22,12 +24,10 @@ public abstract class Gun : MonoBehaviour {
     [SerializeField] protected bool autoFire = true;
 
     public CameraShake cameraShake;
-   
-    [SerializeField][Header("0=Semi Auto, 1 = burst, 2 = auto")] protected int fireMode = 0;
 
+    [SerializeField][Header ("0=Semi Auto, 1 = burst, 2 = auto")] protected int fireMode = 0;
 
     public GameObject impactEffect;
-
 
     public ParticleSystem muzzleFlash;
 
@@ -35,152 +35,118 @@ public abstract class Gun : MonoBehaviour {
     [SerializeField] protected int burstAmount = 3;
     protected int burstCounter = 0;
 
-    [SerializeField]float firingForce = 100f;
+    [SerializeField] float firingForce = 100f;
 
     protected AudioSource audioSource;
-    [SerializeField]AudioClip fireSound;
+    [SerializeField] AudioClip fireSound;
 
     protected Player player;
 
-    void Start()
-    {
+    void Start () {
         currentAmmo = maxAmmo;
         //StartCoroutine(cameraShake.Shake(1f,0.15f));
-        audioSource = GetComponent<AudioSource>();
-        player = transform.root.gameObject.GetComponent<Player>();
+        audioSource = GetComponent<AudioSource> ();
+        player = transform.root.gameObject.GetComponent<Player> ();
     }
 
-    void OnEnable()
-    {
-        isReloading = false;
-        //anim.SetBool("Reloading",false);
+    void OnEnable () {
+        if (!unlimitedAmmo) {
+            isReloading = false;
+            //anim.SetBool("Reloading",false);
+        }
+
     }
 
-
-
-    public void ToggleFireMode()
-    {
-        if (autoFire&&burstFire&&semiAutoFire)
-        {
-            if (fireMode == 0)
-            {
-                fireMode=1;
-                burstCounter = 0;
-            }
-            else if(fireMode == 1)
-            {
-                fireMode = 2;
-            }
-            else
-            {
-                fireMode = 0;
-            }
-        }
-        else if(semiAutoFire && autoFire)
-        {
-            if (fireMode == 0)
-            {
-                fireMode = 2;
-            }
-            else
-            {
-                fireMode = 0;
-            }
-        }
-        else if (semiAutoFire && burstFire)
-        {
-            if (fireMode == 0)
-            {
+    public void ToggleFireMode () {
+        if (autoFire && burstFire && semiAutoFire) {
+            if (fireMode == 0) {
                 fireMode = 1;
                 burstCounter = 0;
-            }
-            else
-            {
+            } else if (fireMode == 1) {
+                fireMode = 2;
+            } else {
                 fireMode = 0;
             }
-        }
-        else if (burstFire && autoFire)
-        {
-            if (fireMode == 1)
-            {
+        } else if (semiAutoFire && autoFire) {
+            if (fireMode == 0) {
                 fireMode = 2;
+            } else {
+                fireMode = 0;
             }
-            else
-            {
+        } else if (semiAutoFire && burstFire) {
+            if (fireMode == 0) {
+                fireMode = 1;
+                burstCounter = 0;
+            } else {
+                fireMode = 0;
+            }
+        } else if (burstFire && autoFire) {
+            if (fireMode == 1) {
+                fireMode = 2;
+            } else {
                 fireMode = 1;
                 burstCounter = 0;
             }
         }
-
 
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if (isReloading)
-        {
-            return;
+    void Update () {
+        if (!unlimitedAmmo) {
+
+            if (isReloading) {
+                return;
+            }
+            if (currentAmmo <= 0 || ((Input.GetButton ("Reload") && currentAmmo != maxAmmo))) {
+                StartCoroutine (Reload ());
+                return;
+            }
         }
-        if (currentAmmo <= 0 || ((Input.GetButton("Reload")&&currentAmmo!=maxAmmo)))
-        {
-            StartCoroutine(Reload());
-            return;
-        }
-        if (Input.GetButton("Fire1") && Time.time >= nextTimeToFire && fireMode == 2)
-        {
+        if (Input.GetButton ("Fire1") && Time.time >= nextTimeToFire && fireMode == 2) {
             nextTimeToFire = Time.time + 1f / fireRate;
             currentAmmo--;
-            Shoot();
-            ShootAbstract();
-        }
-        else if (Input.GetButtonDown("Fire1") && fireMode == 0)
-        {
+            Shoot ();
+            ShootAbstract ();
+        } else if (Input.GetButtonDown ("Fire1") && fireMode == 0) {
             currentAmmo--;
-            Shoot();
-            ShootAbstract();
-        }
-        else if (Input.GetButton("Fire1") && burstCounter < burstAmount && Time.time >= nextTimeToFire && fireMode == 1)
-        {
+            Shoot ();
+            ShootAbstract ();
+        } else if (Input.GetButton ("Fire1") && burstCounter < burstAmount && Time.time >= nextTimeToFire && fireMode == 1) {
             nextTimeToFire = Time.time + 1f / fireRate;
             currentAmmo--;
-            Shoot();
-           ShootAbstract();
+            Shoot ();
+            ShootAbstract ();
             burstCounter++;
-        }
-        else if (Input.GetButtonUp("Fire1") && burstCounter >= burstAmount && fireMode == 1)
-        {
+        } else if (Input.GetButtonUp ("Fire1") && burstCounter >= burstAmount && fireMode == 1) {
             burstCounter = 0;
         }
 
-        if (Input.GetButtonDown("ToggleFireMode") && !Input.GetButton("Fire1"))
-        {
-            ToggleFireMode();
+        if (Input.GetButtonDown ("ToggleFireMode") && !Input.GetButton ("Fire1")) {
+            ToggleFireMode ();
 
         }
 
     }
 
-    IEnumerator Reload()
-    {
+    IEnumerator Reload () {
         isReloading = true;
         //Debug.Log("Reloading");
         if (anim != null)
-            anim.SetTrigger("Reload");
+            anim.SetTrigger ("Reload");
         //anim.SetBool("Reloading", true);
-        yield return new WaitForSeconds(reloadTime);
+        yield return new WaitForSeconds (reloadTime);
         //anim.SetBool("Reloading", false);
         currentAmmo = maxAmmo;
         isReloading = false;
     }
 
-    abstract protected void Shoot();
+    abstract protected void Shoot ();
 
-    void ShootAbstract()
-    {
-        audioSource.PlayOneShot(fireSound, UnityEngine.Random.Range(0.7f, 1f));
+    void ShootAbstract () {
+        audioSource.PlayOneShot (fireSound, UnityEngine.Random.Range (0.7f, 1f));
         //player.GetComponent<Rigidbody>().AddForce(transform.forward*firingForce);
-        
+
     }
 
 }
