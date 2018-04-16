@@ -17,6 +17,6 @@ public class GunProjectile : Gun {
     protected override void Shoot()
     {
         GameObject laser = Instantiate(laserPrefab,muzzle.transform.position,muzzle.transform.rotation);
-        laser.GetComponent<Rigidbody>().AddForce(-laser.transform.up * 100f);
+        laser.GetComponent<Rigidbody>().AddForce(-laser.transform.up * laserForce);
     }
 }
