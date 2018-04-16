@@ -36,7 +36,7 @@ public class GunRaycast : Gun {
                 hit.transform.GetComponent<Rigidbody>().AddForce(-hit.normal * impactForce);
 
             }
-            player.playerController.SetHitAttraction(hit.point);
+            //player.playerController.SetHitAttraction(hit.point);
             //ToDo: Play impact sounds
             
             GameObject impactGO = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));

@@ -81,7 +81,7 @@ public class PlayerController : MonoBehaviour
 
     public void SetHitAttraction(Vector3 hit){
 
-        playerRigidbody.AddForce(Vector3.Normalize(hit - playerRigidbody.position) * tetherStrength);
+        playerRigidbody.AddForce(Vector3.Normalize(hit - playerRigidbody.position) * tetherStrength*Time.deltaTime);
     
     }
 
